@@ -3,6 +3,9 @@
 ## 📌 Descrição
 
 API RESTful desenvolvida com Node.js, Express e PostgreSQL para gerenciamento de tarefas.
+Permite criar, listar, atualizar e deletar tarefas, além de aplicar filtros e paginação.
+
+---
 
 ## 🧱 Tecnologias
 
@@ -12,6 +15,8 @@ API RESTful desenvolvida com Node.js, Express e PostgreSQL para gerenciamento de
 * PostgreSQL
 * Jest
 
+---
+
 ## ⚙️ Como rodar o projeto
 
 ```bash
@@ -20,9 +25,11 @@ cd PosGraduacao
 npm install
 ```
 
-### 🔐 Variáveis de ambiente
+---
 
-Crie um `.env`:
+## 🔐 Variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto:
 
 ```
 PORT=3000
@@ -33,37 +40,150 @@ DB_NAME=taskdb
 DB_PORT=5432
 ```
 
-### ▶️ Rodar aplicação
+---
+
+## ▶️ Rodar aplicação
 
 ```bash
 npm run dev
 ```
 
-### 🧪 Rodar testes
+A API estará disponível em:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🧪 Rodar testes
 
 ```bash
 npm test
 ```
 
-## 🔄 Endpoints
+---
 
-* GET /tasks
-* GET /tasks/:id
-* POST /tasks
-* PUT /tasks/:id
-* DELETE /tasks/:id
+# 🔄 Endpoints da API
 
-## 📦 Funcionalidades
+## 📌 Criar tarefa
+
+**POST /tasks**
+
+```json
+{
+  "title": "Estudar Node.js",
+  "description": "Aprender Express e Sequelize",
+  "status": "todo",
+  "deadline": "2026-05-01"
+}
+```
+
+### ✔ Resposta
+
+```json
+{
+  "id": 1,
+  "title": "Estudar Node.js",
+  "status": "todo"
+}
+```
+
+---
+
+## 📌 Listar todas as tarefas
+
+**GET /tasks**
+
+### ✔ Query params (opcional)
+
+* `status=todo | in_progress | done`
+* `search=palavra`
+* `limit=10`
+* `offset=0`
+
+### ✔ Exemplo
+
+```
+GET /tasks?status=todo&limit=5
+```
+
+---
+
+## 📌 Buscar tarefa por ID
+
+**GET /tasks/:id**
+
+### ✔ Exemplo
+
+```
+GET /tasks/1
+```
+
+---
+
+## 📌 Atualizar tarefa
+
+**PUT /tasks/:id**
+
+```json
+{
+  "title": "Estudar Node.js avançado",
+  "status": "in_progress"
+}
+```
+
+---
+
+## 📌 Deletar tarefa
+
+**DELETE /tasks/:id**
+
+```
+DELETE /tasks/1
+```
+
+---
+
+## 📌 Listar tarefas atrasadas
+
+**GET /tasks/overdue**
+
+Retorna tarefas com prazo vencido.
+
+---
+
+# 📦 Funcionalidades
 
 ✔ CRUD completo
-✔ Filtros por status
+✔ Filtro por status
+✔ Busca por palavra-chave
 ✔ Paginação
-✔ Tarefas atrasadas
+✔ Identificação de tarefas atrasadas
 
-## 🧪 Testes
+---
 
-Testes unitários com Jest.
+# 🧪 Testes
 
-## 📄 Licença
+Testes automatizados utilizando Jest para validação de regras de negócio e endpoints.
 
-MIT
+---
+
+# 📁 Estrutura do projeto
+
+```
+/src
+  /controllers
+  /models
+  /routes
+  /services
+  /middlewares
+  /config
+/tests
+```
+
+---
+
+# 📄 Licença
+
+Este projeto está sob a licença MIT.
