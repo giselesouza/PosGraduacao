@@ -1,0 +1,12 @@
+const request = require('supertest');
+const app = require('../src/app');
+
+describe('Task API', () => {
+  it('should create a task', async () => {
+    const res = await request(app)
+      .post('/tasks')
+      .send({ title: 'Teste' });
+
+    expect(res.statusCode).toBe(201);
+  });
+});
