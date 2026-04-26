@@ -20,8 +20,8 @@ Permite criar, listar, atualizar e deletar tarefas, além de aplicar filtros e p
 ## ⚙️ Como rodar o projeto
 
 ```bash
-git clone https://github.com/giselesouza/PosGraduacao
-cd PosGraduacao
+git clone https://github.com/giselesouza/PosGraduacao-Mini-Projeto
+cd PosGraduacao-Mini-Projeto
 npm install
 ```
 
